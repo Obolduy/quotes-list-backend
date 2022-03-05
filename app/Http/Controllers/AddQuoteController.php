@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class AddQuoteController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/api/add-quotes",
+     *     @OA\Response(response="200", description="Добавляет цитату в базу данных")
+     * )
+    */
     public function add(Request $request)
     {
         $data = $request->all();
@@ -33,6 +39,12 @@ class AddQuoteController extends Controller
         DB::commit();
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/check-author",
+     *     @OA\Response(response="200", description="Проверяет, есть ли автор в базе данных")
+     * )
+    */
     public function checkAuthor(Request $request)
     {
         $data = $request->all();

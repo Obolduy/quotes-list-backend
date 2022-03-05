@@ -6,6 +6,13 @@ use App\Models\{TagsNames, Quotes};
 
 class ShowQuotesController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/show-quotes",
+     *     @OA\Response(response="200", description="Возвращает по 10 цитат с тэгами")
+     * )
+    */
+
     public function showQuotes() 
     {
         $quotes = Quotes::select('quotes.text', 'quotes.created_at', 'quotes.id as quote_id', 'authors.author')
@@ -24,6 +31,13 @@ class ShowQuotesController extends Controller
 
         return response()->json(['quotes' => $quotes, 'tags' => $tags]);
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/show-quotes/{id}",
+     *     @OA\Response(response="200", description="Возвращает тэги и цитату по ее ID")
+     * )
+     */
 
     public function showQuote(int $id) 
     {

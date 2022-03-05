@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: 'API для SPA с цитатами'
+  version: '1.0'
+paths:
+  /api/add-quotes:
+    post:
+      operationId: 3fc53759741b8be2a02b1bef987cb688
+      responses:
+        '200':
+          description: 'Добавляет цитату в базу данных'
+  /api/check-author:
+    post:
+      operationId: b5b3774cfa6b48e58b79253d13e051db
+      responses:
+        '200':
+          description: 'Проверяет, есть ли автор в базе данных'
+  /api/show-quotes:
+    get:
+      operationId: a1bd97656f37caada95741636644ccbb
+      responses:
+        '200':
+          description: 'Возвращает по 10 цитат с тэгами'
+  /api/show-quotes/{id}:
+    get:
+      operationId: 7210a472009fd40e0e4849aaf10426fe
+      responses:
+        '200':
+          description: 'Возвращает тэги и цитату по ее ID'
