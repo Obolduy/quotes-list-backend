@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class AddQuoteController extends Controller
 {
-    public function add(Request $request) {
+    public function add(Request $request)
+    {
         $data = $request->all();
 
         DB::beginTransaction();
@@ -32,7 +33,8 @@ class AddQuoteController extends Controller
         DB::commit();
     }
 
-    public function checkAuthor(Request $request) {
+    public function checkAuthor(Request $request)
+    {
         $data = $request->all();
 
         $authors = Authors::where('author', 'like', "%{$data['author']}%")->get();

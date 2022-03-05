@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\{TagsNames, Quotes};
-use Illuminate\Http\Request;
 
 class ShowQuotesController extends Controller
 {
-    public function showQuotes() {
+    public function showQuotes() 
+    {
         $quotes = Quotes::select('quotes.text', 'quotes.created_at', 'quotes.id as quote_id', 'authors.author')
                         ->join('authors', 'quotes.author_id', 'authors.id')
                         ->orderByDesc('quotes.created_at')
@@ -25,7 +25,8 @@ class ShowQuotesController extends Controller
         return response()->json(['quotes' => $quotes, 'tags' => $tags]);
     }
 
-    public function showQuote(int $id) {
+    public function showQuote(int $id) 
+    {
         $quote = Quotes::select('quotes.*', 'authors.author')
                         ->join('authors', 'quotes.author_id', 'authors.id')
                         ->where('quotes.id', $id)
