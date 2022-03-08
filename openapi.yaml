@@ -27,3 +27,9 @@ paths:
       responses:
         '200':
           description: 'Возвращает тэги и цитату по ее ID'
+  /api/get-tags:
+    get:
+      operationId: 0ab3d09fc5207b7eb1ce8a208c59bcc1
+      responses:
+        '200':
+          description: 'Возвращает список тегов'

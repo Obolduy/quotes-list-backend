@@ -11,7 +11,7 @@ class ShowQuotesController extends Controller
      *     path="/api/show-quotes",
      *     @OA\Response(response="200", description="Возвращает по 10 цитат с тэгами")
      * )
-    */
+     */
 
     public function showQuotes() 
     {
