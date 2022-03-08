@@ -21,15 +21,15 @@ class AddQuoteController extends Controller
         DB::beginTransaction();
 
         $tags = [];
-        foreach ($data['tags'] as $tag_id) {
-            $tags[] = TagsNames::find($tag_id);
+        foreach ($data['tags'] as $tag) {
+            $tags[] = TagsNames::where('tag', trim($tag))->first();
         }
 
         $author = Authors::firstOrCreate(['author' => $data['author']]);
 
         $quote = Quotes::create([
             'author_id' => $author->id,
-            'text' => $data['text']
+            'text' => $data['quote']
         ]);
 
         foreach ($tags as $tag) {
