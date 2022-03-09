@@ -41,15 +41,19 @@ class ShowQuotesController extends Controller
 
     public function showQuote(int $id) 
     {
-        $quote = Quotes::select('quotes.*', 'authors.author')
-                        ->join('authors', 'quotes.author_id', 'authors.id')
-                        ->where('quotes.id', $id)
-                        ->first();
+        try {
+            $quote = Quotes::select('quotes.*', 'authors.author')
+                            ->join('authors', 'quotes.author_id', 'authors.id')
+                            ->where('quotes.id', $id)
+                            ->first();
 
-        $tags = TagsNames::select('tags_names.tag')
+            $tags = TagsNames::select('tags_names.tag')
                             ->join('tags_list', 'tags_names.id', 'tags_list.tag_id')
                             ->where('tags_list.quote_id', $quote->id)
                             ->get();
+        } catch (\Exception $e) {
+            return response()->json(['error'=>'Not found']);
+        }
 
         return response()->json(['quote' => $quote, 'tags' => $tags]);
     }
